@@ -40,7 +40,7 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Movie deletedMovie = find(id);
         session.delete(deletedMovie);

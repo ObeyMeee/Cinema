@@ -8,16 +8,15 @@
           crossorigin="anonymous">
 </head>
 <body>
-
-<p th:text="${#servletContext.getContextPath()}"></p>
 <hr>
+
 <div class="container">
     <div class="row">
         <div class="col">
             <div th:each="movie : ${movies}">
                 <img class="img-thumbnail"
-                         th:src="${asfd}"
-                     th:alt="${movie.name}"/>
+                     th:src="@{classpath:/static/posters/${movie.movieDetails.media.poster}}"
+                     th:alt="${movie.movieDetails.media.poster}"/>
                 <a class="btn-primary"
                    th:href="@{/movies/{id}(id = ${movie.id})}"
                    th:text="${movie.date}">Date</a>

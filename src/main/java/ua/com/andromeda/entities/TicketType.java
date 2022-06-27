@@ -21,11 +21,4 @@ public class TicketType implements Serializable {
     @Column
     @NotEmpty(message = "duration can't be empty")
     private String name;
-
-    @OneToOne(mappedBy = "ticketType",
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REFRESH})
-    @ToString.Exclude
-    private Ticket ticket;
 }

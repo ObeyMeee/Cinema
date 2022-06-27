@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         Session session = sessionFactory.getCurrentSession();
         User deletedUser = find(id);
         session.delete(deletedUser);

@@ -1,4 +1,4 @@
-package ua.com.andromeda.service;
+package ua.com.andromeda.services;
 
 import ua.com.andromeda.entities.User;
 

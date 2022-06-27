@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.com.andromeda.entities.User;
-import ua.com.andromeda.service.UserService;
+import ua.com.andromeda.services.UserService;
 
 import javax.validation.Valid;
 

@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "movie_details")
@@ -46,14 +48,20 @@ public class MovieDetails implements Serializable {
     @Min(value = 0, message = "year can't be a negative number")
     private Integer year;
 
-    @OneToOne(fetch = FetchType.LAZY,
-                cascade = CascadeType.ALL,
-                mappedBy = "movieDetails")
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "movieDetails")
     @ToString.Exclude
-    private Movie movie;
+    private List<Movie> movies;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "media_id")
     private Media media;
+
+    public void addMovie(Movie newMovie){
+        if(movies == null){
+            movies = new ArrayList<>();
+        }
+        movies.add(newMovie);
+    }
 
 }

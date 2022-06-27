@@ -1,11 +1,11 @@
-package ua.com.andromeda.service.impl;
+package ua.com.andromeda.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.com.andromeda.dao.MovieDao;
 import ua.com.andromeda.entities.Movie;
-import ua.com.andromeda.service.MovieService;
+import ua.com.andromeda.services.MovieService;
 
 import java.util.List;
 
@@ -38,8 +38,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Transactional
     @Override
-    public void remove(Long id) {
-        movieDao.remove(id);
+    public void delete(Long id) {
+        movieDao.delete(id);
     }
 
     @Transactional

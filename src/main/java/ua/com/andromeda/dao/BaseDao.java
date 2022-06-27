@@ -6,6 +6,6 @@ public interface BaseDao<T> {
     T find(Long id);
     List<T> findAll();
     void saveOrUpdate(T entity);
-    void remove(Long id);
+    void delete(Long id);
 
 }

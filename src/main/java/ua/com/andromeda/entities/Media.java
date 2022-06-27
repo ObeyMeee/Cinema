@@ -23,9 +23,4 @@ public class Media implements Serializable {
     @Column
     @NotEmpty
     private String trailer;
-
-    @OneToOne(mappedBy = "media",
-            cascade = CascadeType.ALL)
-    private MovieDetails movieDetails;
-
 }

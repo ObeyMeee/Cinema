@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+
 @Entity
 @Table(name = "roles")
 @Getter
@@ -14,16 +15,11 @@ public enum Role implements Serializable {
     @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
 
     @Column
     @NotEmpty(message = "name can't be empty")
     private String name;
-
-    @OneToOne(fetch = FetchType.LAZY,
-            mappedBy = "role",
-            cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST,CascadeType.REFRESH})
-    private User user;
 
 }

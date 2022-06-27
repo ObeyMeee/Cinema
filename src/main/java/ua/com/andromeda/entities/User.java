@@ -14,9 +14,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class User implements Serializable {
+    @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
 
     @Column
@@ -33,7 +33,8 @@ public class User implements Serializable {
     @Size(min = 5, max = 50, message = "password should contains more than 5 and less than 50 characters")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "role_id")
     private Role role;
 

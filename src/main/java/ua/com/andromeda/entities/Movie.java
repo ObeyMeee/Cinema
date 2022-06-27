@@ -26,19 +26,8 @@ public class Movie implements Serializable {
     @Column
     @NotEmpty(message = "date shouldn't be empty")
     private String date;
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH,
-            CascadeType.PERSIST, CascadeType.REFRESH},
-            fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH,
+            CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "movie_details_id")
     private MovieDetails movieDetails;
-
-
-
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REFRESH},
-            fetch = FetchType.LAZY,
-            mappedBy = "movie")
-    @ToString.Exclude
-    private Ticket ticket;
-
 }
