@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<form method="post" th:action="@{/users}" th:object="${user}">
+
+    <div th:if="${#fields.hasErrors()}">
+        <div class="alert alert-danger" role="alert">
+            <p th:if="${#fields.hasErrors('email')}"th:errors="*{email}">Errors</p>
+            <p th:if="${#fields.hasErrors('login')}"th:errors="*{login}">Errors</p>
+            <p th:if="${#fields.hasErrors('password')}"th:errors="*{password}">Errors</p>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   th:field="*{email}">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="login">login</label>
+            <input class="form-control"
+                   id="login"
+                   th:field="*{login}">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       th:field="*{password}">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkOnBot">
+            <label class="form-check-label" for="checkOnBot">
+                Check me out
+            </label>
+        </div>
+    </div>
+    <div th:switch="${role}">
+        <div th:case="null">
+            <input type="hidden"
+                   th:field="*{role}" th:value="*{role.CUSTOMER}">
+        </div>
+        <div th:case="super_admin'">
+            <input type="hidden"
+                   th:field="*{role}" th:value="*{role.SUPER_ADMIN}">
+        </div>
+        <div th:case="'admin'">
+            <input type="hidden"
+                   th:field="*{role}" th:value="*{role.ADMIN}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Sign up</button>
+
+
+</form>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
